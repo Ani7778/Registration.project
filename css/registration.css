@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(https://fotooboi-spb.ru/media/k2/items/cache/f203d630ce0c3265f9c9461092194e6b_XL.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  font-size: 37px;
+}
+
+.form {
+  position: absolute;
+  right: 400px;
+  margin-top: 50px;
+  border-radius: 7px;
+  padding: 10px;
+  width: 300px;
+  height: 650px;
+  font-family: "Caveat", cursive;
+}
+.form label {
+  width: 300px;
+  margin: 0 30px;
+  font-size: 27px;
+  text-align: left;
+}
+.form input {
+  width: 300px;
+  height: 40px;
+  margin: 7px;
+  border-radius: 7px;
+  border-color: #ffffff;
+}
+.form input:hover {
+  background-color: #f5ffff;
+}
+.form input[type=submit] {
+  margin-top: 60px;
+  background-color: #bd7889;
+  color: #ffffff;
+  border-color: #b46773;
+  font-size: 27px;
+  font-family: "Caveat", cursive;
+}
+.form input[type=submit]:hover {
+  background-color: #b46773;
+}
+@media screen and (max-width: 768px) {
+  .form {
+    right: 0;
+    left: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .form {
+    margin-left: 30px;
+  }
+}
+
+/*# sourceMappingURL=registration.css.map */
