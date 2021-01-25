@@ -1,21 +1,21 @@
 document.getElementById('button').addEventListener("click", validate);
 
 function validate() {
-	var inputFname = document.getElementById('fname').value;
-	var inputLname = document.getElementById('lname').value;
-	var inputEmail = document.getElementById('email').value;
-	var inputPassword = document.getElementById('password').value;
-	var repeatPassword = document.getElementById('repeatpsw').value;
+    let inputFname = document.getElementById('fname').value;
+	let inputLname = document.getElementById('lname').value;
+	let inputEmail = document.getElementById('email').value;
+	let inputPassword = document.getElementById('password').value;
+	let repeatPassword = document.getElementById('repeatpsw').value;
 
-	var fnameRGEX = /\b[a-zA-Z]{6,20}\b/;
-	var lnameRGEX = /\b[a-zA-Z]{6,20}\b/;
-	var emailRGEX = /\w+@\w+\.\w+/;
-	var passwordRGEX = /[a-zA-Z0-9()!@_?%><$^&#*+]{6,12}/;
+	let fnameRGEX = /\b[a-zA-Z]{6,20}\b/;
+	let lnameRGEX = /\b[a-zA-Z]{6,20}\b/;
+	let emailRGEX = /\w+@\w+\.\w+/;
+	let passwordRGEX = /[a-zA-Z0-9()!@_?%><$^&#*+]{6,12}/;
 
-    var fnameResult = fnameRGEX.test(inputFname);
-    var lnameResult = lnameRGEX.test(inputLname);
-    var emailResult = emailRGEX.test(inputEmail);
-    var passwordResult = passwordRGEX.test(inputPassword);
+    let fnameResult = fnameRGEX.test(inputFname);
+    let lnameResult = lnameRGEX.test(inputLname);
+    let emailResult = emailRGEX.test(inputEmail);
+    let passwordResult = passwordRGEX.test(inputPassword);
 
     if (fnameResult == false) {
     	alert("First name must be from 6 to 20 characters and contain only English letters");
@@ -40,4 +40,31 @@ function validate() {
     return true;
 }
 
+let inputFname = document.getElementById('fname').value;
+let inputLname = document.getElementById('lname').value;
+let inputEmail = document.getElementById('email').value;
+let inputPassword = document.getElementById('password').value;
+let repeatPassword = document.getElementById('repeatpsw').value;
 
+const request = new XMLHttpRequest();
+
+const url = "ajax_quest.php";
+
+const data = "First name:" + " " + inputFname + " " + 
+	"Last name:" + " " + inputLname + " " +
+	"E-mail:" + " " + inputEmail + " " + 
+	"Password:" + " " + inputPassword;
+
+request.open("POST", url, true);
+
+request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+request.addEventListener("readystatechange", sendRequest);
+
+function sendRequest() {
+	if (request.readyState === 4 && request.status === 200) {
+		console.log(request.responseText);
+	}
+}
+
+request.send(data);
