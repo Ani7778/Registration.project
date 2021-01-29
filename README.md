@@ -1,6 +1,6 @@
 # Registration page
 
-This project is an registration page with regexp and AJAX request.
+This project is a registration page with regexp and AJAX request.
 
 ## Content 
 
