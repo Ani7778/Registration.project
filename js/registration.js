@@ -17,54 +17,58 @@ function validate() {
     let emailResult = emailRGEX.test(inputEmail);
     let passwordResult = passwordRGEX.test(inputPassword);
 
-    if (fnameResult == false) {
+    if (fnameResult === false) {
     	alert("First name must be from 6 to 20 characters and contain only English letters");
     }
 
-    if (lnameResult == false) {
+    if (lnameResult === false) {
     	alert("Last name must be from 6 to 20 characters and contain only English letters");
     }
 
-    if (emailResult == false)	 {
+    if (emailResult === false)	 {
     	alert("E-mail must begin with letters, contain @ than letters, '.' and letters");
     }
 
-    if (passwordResult == false) {
+    if (passwordResult === false) {
     	alert("Password must be from 6 to 12 characters and can contain any symbols");
     }
 
-    if (repeatPassword !== passwordResult) {
+    if (repeatPassword !== inputPassword) {
     	alert("Fields 'Password' and 'Repeat password' must have the same values");
     }
+     
+    sendUserDataToServer(); 
 
     return true;
 }
 
-let inputFname = document.getElementById('fname').value;
-let inputLname = document.getElementById('lname').value;
-let inputEmail = document.getElementById('email').value;
-let inputPassword = document.getElementById('password').value;
-let repeatPassword = document.getElementById('repeatpsw').value;
+function sendUserDataToServer() {
+	let inputFname = document.getElementById('fname').value;
+	let inputLname = document.getElementById('lname').value;
+	let inputEmail = document.getElementById('email').value;
+	let inputPassword = document.getElementById('password').value;
+	let repeatPassword = document.getElementById('repeatpsw').value;
 
-const request = new XMLHttpRequest();
+	const request = new XMLHttpRequest();
 
-const url = "ajax_quest.php";
+	const url = "https://habitat.help";
 
-const data = "First name:" + " " + inputFname + " " + 
-	"Last name:" + " " + inputLname + " " +
-	"E-mail:" + " " + inputEmail + " " + 
-	"Password:" + " " + inputPassword;
+	const data = "firstName=" + inputFname
+	 + "&" + "lastName=" + inputLname 
+	 + "&" + "email=" + inputEmail 
+	 + "&" + "password=" + inputPassword;
 
-request.open("POST", url, true);
+	request.open("POST", url, true);
 
-request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-request.addEventListener("readystatechange", sendRequest);
+	request.addEventListener("readystatechange", sendRequest);
 
-function sendRequest() {
-	if (request.readyState === 4 && request.status === 200) {
-		console.log(request.responseText);
+	function sendRequest() {
+		if (request.readyState === 4 && request.status === 200) {
+			console.log(request.responseText);
+		}
 	}
-}
 
-request.send(data);
+	request.send(JSON.stringify(data));
+}

@@ -41,7 +41,7 @@ h1 {
 .form input:hover {
   background-color: #f5ffff;
 }
-.form input[type=submit] {
+.form button[type=button] {
   margin-top: 60px;
   background-color: #bd7889;
   color: #ffffff;
@@ -49,7 +49,7 @@ h1 {
   font-size: 27px;
   font-family: "Caveat", cursive;
 }
-.form input[type=submit]:hover {
+.form button[type=button]:hover {
   background-color: #b46773;
 }
 @media screen and (max-width: 768px) {
